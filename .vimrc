@@ -21,13 +21,14 @@ endif
 let NERDTreeQuitOnOpen=1
 map <C-n> :NERDTreeToggle<CR>
 
-"Color scheme config
+"=============== Color Scheme ================ 
 syntax enable
 se t_Co=16
 let g:solarized_termcolors=256  
-set background=dark  
+"set background=dark  
 colorscheme monokai
 
+"=============== Airline Config ================ 
 "Always enable airline
 set laststatus=2
 let g:airline_theme='dark'
@@ -35,30 +36,28 @@ let g:airline_left_sep = '▸'
 let g:airline_right_sep = '◀'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
-
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-
 "Showing numbers
 set number
 
 " This allows buffers to be hidden if you've modified a buffer.
-" " This is almost a must if you wish to use buffers in this way.
+" This is almost a must if you wish to use buffers in this way.
 set hidden
-"
-" " To open a new empty buffer
-" " This replaces :tabnew which I used to bind to this mapping
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
 nmap <leader>T :enew<cr>
-"
-" " Move to the next buffer
+
+" Move to the next buffer
 nmap <leader>l :bnext<CR>
-"
-" " Move to the previous buffer
+
+" Move to the previous buffer
 nmap <leader>h :bprevious<CR>
-"
-" " Close the current buffer and move to the previous one
-" " This replicates the idea of closing a tab
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
-"
-" " Show all open buffers and their status
+
+" Show all open buffers and their status
 nmap <leader>bl :ls<CR>
