@@ -1,6 +1,11 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Change leader to a comma because the backslash is too far away
+" " That means all \x commands turn into ,x
+" " The mapleader has to be set before vundle starts loading all 
+" " the plugins.
+let mapleader=","
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
