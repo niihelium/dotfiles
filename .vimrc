@@ -1,40 +1,19 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
 " Change leader to a comma because the backslash is too far away
 " " That means all \x commands turn into ,x
 " " The mapleader has to be set before vundle starts loading all 
 " " the plugins.
 let mapleader=","
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+"=============== Vundle Initialization ===============
+" This loads all the plugins specified in ~/.vim/vundles.vim
+" Use Vundle plugin to manage all other plugins
+if filereadable(expand("~/.vim/plugins.vim"))
+  source ~/.vim/vundles.vim
+endif
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'sickill/vim-monokai'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+"Put your non-Plugin stuff after this line
 
 "NerdTree Config
 "autocmd StdinReadPre * let s:std_in=1
@@ -57,8 +36,7 @@ let g:airline_right_sep = '◀'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 
-"
-" " Show just the filename
+" Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 "Showing numbers
