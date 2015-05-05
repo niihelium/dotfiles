@@ -10,7 +10,7 @@ let mapleader=","
 " This loads all the plugins specified in ~/.vim/vundles.vim
 " Use Vundle plugin to manage all other plugins
 if filereadable(expand("~/.vim/plugins.vim"))
-  source ~/.vim/vundles.vim
+  source ~/.vim/plugins.vim
 endif
 
 "Put your non-Plugin stuff after this line
