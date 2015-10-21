@@ -1,0 +1,19 @@
+# Build:
+#  docker build -t niihelium/meanio - < ~/workspace/docker-images/mean-test/node-dockerfile
+
+FROM ubuntu:latest
+MAINTAINER Nikita Unkovsky, nii.unkovsky@gmail.com
+
+# Dependencies
+RUN \
+    apt-get -yqq update && \
+    apt-get dist-upgrade -yqq && \
+    apt-get install -yqq curl && \
+    apt-get clean
+
+RUN \
+    apt-get update && \
+    apt-get install curl && \
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo bash - && \
+    apt-get install -yqq nodejs && \
+    npm update -g

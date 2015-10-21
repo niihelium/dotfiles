@@ -1,0 +1,38 @@
+# Build:
+#  docker build -t niihelium/meanio - < ~/workspace/docker-images/mean-test/mean-dockerfile
+
+FROM niihelium/node:4.2.1
+MAINTAINER Nikita Unkovsky, nii.unkovsky@gmail.com
+
+#ENV DEBIAN_FRONTEND noninteractive
+#ENV LANG=C
+#ENV LC_ALL=C
+
+# Dependencies
+RUN \
+    apt-get -yqq update && \
+    apt-get dist-upgrade -yqq && \
+    apt-get install -yqq wget vim curl ssh tree sudo aptitude && \
+    apt-get clean
+
+# Mongodb & mean-cli
+RUN \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+RUN \
+#   echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.0.list && \
+    echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.0.list && \
+    apt-get -yqq update && \
+    apt-get install -yqq mongodb-org && \
+    apt-get clean && \
+    npm install -g gulp && \
+    npm install -g bower && \
+    npm install -g mean-cli && \
+#   npm install -g forever && \
+    npm cache clean && \
+    rm -rf /var/lib/mongodb/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+EXPOSE 3000
+
+RUN echo "\n##############################\n1. Create a new user with adduser, 'su' into that user.\n2. 'yo meanjs' to scaffold your app in the current directory.\n3. Start mongo in the background (e.g. 'mongod &')\n##############################\n"
+
