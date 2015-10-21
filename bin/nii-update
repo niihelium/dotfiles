@@ -1,0 +1,12 @@
+#!/bin/sh
+sudo apt-get update -qq
+echo 'updated'
+sudo apt-get upgrade -qq
+echo 'upgraded'
+sudo apt-get dist-upgrade -qq
+echo 'dist-upgraded'
+sudo apt-get autoclean -qq
+echo 'autocleand'
+sudo apt-get autoremove -qq
+echo 'autoremoved'
+echo 'Done'
