@@ -6,8 +6,8 @@ mkdir ~/.dotfiles/dot_backup
 ln -s ~/.dotfiles/bin ~/bin
 ln -s ~/.dotfiles/vim ~/.vim
 ln -s ~/.dotfiles/vim ~/.profile
-ln -s ~/.dotfiles/i3 ~/i3
-ln -s ~/.dotfiles/.bashrc ~/bashrc
+ln -s ~/.dotfiles/i3 ~/.i3
+ln -s ~/.dotfiles/.bashrc ~/.bashrc
 
 
 sudo chmod -R +x ~/.dotfiles
