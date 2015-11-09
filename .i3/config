@@ -11,24 +11,9 @@
 
 set $mod Mod4
 
-exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle"
-# Enabling trasparency
-exec --no-startup-id xcompmgr -c -f -n
-# Setting background
-exec feh --bg-scale /home/nii/Pictures/Cloud_Breaker_1920x1080.jpg
-# Launching auth agent
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-
-bindsym $mod+F1 exec google-chrome
-# Volume management
-bindsym $mod+F10 exec amixer -D pulse set Master toggle
-bindsym $mod+F11 exec amixer -q set Master 2%- unmute
-bindsym $mod+F12 exec amixer -q set Master 2%+ unmute
-
-
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango: DroidSansMono 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -107,9 +92,13 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+### Custom workspaces names ###
+set $tag1 "1: www"
+set $tag2 "2: dev"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -120,8 +109,8 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
@@ -184,3 +173,24 @@ bar {
     # Using custom i3status.conf
     status_command i3status -c ~/.i3/i3status.conf
 }
+
+### Colors ####
+client.focused #007fbf #007fbf #ffffff
+client.unfocused #666666 #666666 #ffffff
+client.urgent #aa0000 #990000 #ffffff
+
+### Startup Apps ###
+exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle"
+# Enabling trasparency
+exec --no-startup-id xcompmgr -c -f -n
+# Setting background
+exec feh --bg-scale /home/nii/Pictures/Cloud_Breaker_1920x1080.jpg
+# Launching auth agent
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+### Custom binds ###
+bindsym $mod+F1 exec google-chrome
+# Volume management
+bindsym $mod+F10 exec amixer -D pulse set Master toggle
+bindsym $mod+F11 exec amixer -q set Master 2%- unmute
+bindsym $mod+F12 exec amixer -q set Master 2%+ unmute
