@@ -1,0 +1,5 @@
+# Build:
+#  docker build -t niihelium/meanio - < ~/workspace/docker-images/mean-test/mean-dockerfile
+
+FROM ubuntu:latest
+MAINTAINER Nikita Unkovsky, nii.unkovsky@gmail.com

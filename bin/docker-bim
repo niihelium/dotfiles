@@ -1,0 +1,4 @@
+#!/bin/sh
+
+docker build -t niihelium/meanio:1.0 - < $1
+
