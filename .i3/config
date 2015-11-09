@@ -9,11 +9,22 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
+exec --no-startup-id "setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle"
+# Enabling trasparency
 exec --no-startup-id xcompmgr -c -f -n
-#exec feh --bg-scale /home/nii/Pictures/Cloud_Breaker_1920x1080.jpg
+# Setting background
+exec feh --bg-scale /home/nii/Pictures/Cloud_Breaker_1920x1080.jpg
+# Launching auth agent
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+
+bindsym $mod+F1 exec google-chrome
+# Volume management
+bindsym $mod+F10 exec amixer -D pulse set Master toggle
+bindsym $mod+F11 exec amixer -q set Master 2%- unmute
+bindsym $mod+F12 exec amixer -q set Master 2%+ unmute
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -156,5 +167,20 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    colors {
+        # Whole color settings
+        background #000000
+        statusline #ffffff
+        separator  #666666
+
+        # Type             border  background font
+        focused_workspace  #008fff #007fff #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #aa0000 #990000 #ffffff
+    }
+    # i3bar position
+    position top
+    # Using custom i3status.conf
+    status_command i3status -c ~/.i3/i3status.conf
 }
